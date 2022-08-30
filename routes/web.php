@@ -25,7 +25,7 @@ Route::get('/productos', function () {
 
 Route::get('/productos/create', [ProductoController::class, 'create']);
 */
-Route::resource('productos', ProductoController::class)->middleware('auth'); //agregando middleware('auth')) se restringe la vista a un logeo
+Route::resource('productos', ProductoController::class)->middleware('auth'); 
 Auth::routes(['reset'=>false]);
 
 Route::get('/home', [ProductoController::class, 'show'])->name('home');
@@ -36,3 +36,4 @@ Route::group(['middleware'=>'auth'], function(){
    Route::get('/', [ProductoController::class, 'show'])->name('home');
 
 });
+

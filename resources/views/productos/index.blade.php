@@ -32,8 +32,6 @@
                 <th>Descripción</th>
                 <th>Categoría</th>
                 <th>Sucursal</th>
-                <th>Precio</th>
-                <th>fecha de compra</th>
             </tr>
         </thead>
         <tbody>
@@ -44,8 +42,6 @@
                 <td>{{ $producto->descripcion }}</td>
                 <td>{{ $producto->categoria }}</td>
                 <td>{{ $producto->sucursal }}</td>
-                <td>{{ $producto->precio }}</td>
-                <td>{{ $producto->fechaCompra }}</td>
                 <td>
                     <a href="{{ url('/productos/'.$producto->id.'/edit') }}" class="btn btn-warning">
                     Editar 

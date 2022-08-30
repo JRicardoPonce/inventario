@@ -42,20 +42,21 @@
     
     <div class="form-group">
         <label for="estado">    Estado</label>
-        <select name="estado" id="estado" class="form-control" required >
+        <select name="estado" id="estado" class="form-control" value="{{ isset($producto->estado)?$producto->estado:old('estado') }}"  required >
             <option value="" selected>Selecciona una opción...</option>
             <option value="0">Abierto</option>
             <option value="1">Cerrado</option>
 
         </select>
     </div>
-    
     <div class="form-group">
-        <label for="fechaCompra">    comentarios</label>
-        <input type="textarea" required class="form-control" name="comentarios" value="" id="comentarios" >
-    </div>    
+            <label for="comentarios">    comentarios</label>
+            <input type="textarea" required class="form-control" name="comentarios" value="{{ isset($producto->comentarios)?$producto->comentarios:old('comentarios') }}" id="comentarios" maxlength="100" requiered>
+    </div>
+    
+
     <br>
-        <input class="btn btn-success" type="submit" value=" {{ $modo }} Producto">
+        <input class="btn btn-success" type="submit" value="Guardar Cambios">
 
         <a class="btn btn-primary" href="{{ url('/productos') }}">
                   Regresar
@@ -67,11 +68,11 @@
 @if($modo==='Registrar')
         <div class="form-group">
             <label for="nombreProducto">    Nombre del producto</label>
-            <input type="text" class="form-control" name="nombreProducto" value="{{ isset($producto->nombreProducto)?$producto->nombreProducto:old('nombreProducto') }}" id="nombreProducto">
+            <input type="text" class="form-control" name="nombreProducto" value="{{ isset($producto->nombreProducto)?$producto->nombreProducto:old('nombreProducto') }}" id="nombreProducto" maxlength=30 required>
         </div> 
         <div class="form-group">
             <label for="descripcion">    Descripción del Porducto</label>
-            <input type="text" class="form-control" name="descripcion" value="{{ isset($producto->descripcion)?$producto->descripcion:old('descripcion') }}" id="descripcion">
+            <input type="text" class="form-control" name="descripcion" value="{{ isset($producto->descripcion)?$producto->descripcion:old('descripcion') }}" id="descripcion" maxlength=100 required>
         </div> 
         <div class="form-group">
             <label for="categoria">    Categoría</label>
@@ -93,17 +94,17 @@
         </div>    
         <div class="form-group">
             <label for="precio">    Precio</label>
-            <input type="text" class="form-control" name="precio" value="{{ isset($producto->precio)?$producto->precio:old('precio') }}" id="precio">
+            <input type="text" class="form-control" name="precio" value="{{ isset($producto->precio)?$producto->precio:old('precio') }}" id="precio" maxlength="5" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" required>
         </div>
         <div class="form-group">
             <label for="fechaCompra">    Fecha de Compra</label>
-            <input type="date" class="form-control"  name="fechaCompra" value="{{ isset($producto->fechaCompra)?$producto->fechaCompra:old('fechaCompra') }}" id="fechaCompra">
+            <input type="date" class="form-control"  name="fechaCompra" value="{{ isset($producto->fechaCompra)?$producto->fechaCompra:old('fechaCompra') }}" id="fechaCompra" required>
         </div>
             <input type="hidden" name="estado" id="estado" value="0" >
             <input type="hidden" name="comentarios" value="{{ isset($producto->comentarios)?$producto->comentarios:'0' }}" id="comentarios" value="Null" >
         <br>
         
-            <input class="btn btn-success" type="submit" value=" {{ $modo }} Producto">
+            <input class="btn btn-success" type="submit" value=" {{ $modo }}">
 
             <a class="btn btn-primary" href="{{ url('/productos/show') }}">
                     Regresar

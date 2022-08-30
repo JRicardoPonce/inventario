@@ -24,7 +24,6 @@ class CreateProductosTable extends Migration
             $table->date('fechaCompra');
             $table->integer('estado');
             $table->string('comentarios', 100);
-
             $table->timestamps();
         });
     }
